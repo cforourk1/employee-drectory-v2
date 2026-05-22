@@ -1,5 +1,6 @@
 import  express  from "express";
 import employees from "#db/employees";
+import { addEmployee } from "#db/employees";
 
 
 const router = express.Router();
@@ -31,6 +32,19 @@ router.get("/:id", (req, res) => {
   }
 
   res.send(employee);
+});
+
+
+// post employee
+
+router.route("/").post((req, res) => {
+  if (!req.body) {
+   return res.status(400).send("Request must have a body");
+  };
+    if (!req.body.name) {
+   return res.status(400).send("New employee name was not provided");
+  }
+  res.status(201).send(addEmployee(req.body.name));
 });
 
 

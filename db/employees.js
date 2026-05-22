@@ -13,3 +13,19 @@ const employees = [
 
 /* WARNING: this must remain the default export in order for the tests to work! */
 export default employees;
+
+/**
+Creates a new employee
+ * @param {string} name of the employee to add
+ * @returns {Employee} the newly created employee
+ */
+export function addEmployee(name) {
+  const newEmployee = {
+    id: employees[employees.length - 1].id + 1,
+    name: name,
+  };
+  employees.push(newEmployee);
+  return newEmployee;
+}
+
+
